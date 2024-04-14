@@ -618,13 +618,18 @@ void double_PID(){
 	
   float Pitch_OUT,Roll_OUT,Yaw_OUT;
 	
+	
+	///// OS 适配
+	
+	
+	
+	
 	// 获取传感器数值
 	unsigned int press; 
 	int temp;
 	// 获取当前姿态角度  
-	Read_DMP(&current_pitch,&current_roll,&current_yaw);      // 获取三个角度
-  //BMP280_ReadPressureTemperature(&press,&temp);            //bmp280获取气压值和温度
-	MPU_Get_Gyroscope(&gyroy,&gyrox,&gyroz);                // 获取角速度
+	//Read_DMP(&current_pitch,&current_roll,&current_yaw);      // 获取三个角度
+	//MPU_Get_Gyroscope(&gyroy,&gyrox,&gyroz);                // 获取角速度
 	
                                       
 	temperature1 = temp/100.0f;   // 温度格式化

@@ -49,3 +49,5 @@
 .\objects\seniortask.o: ..\Middlewares\MPU6050\DMP\inv_mpu_dmp_motion_driver.h
 .\objects\seniortask.o: ..\Middlewares\usart\usart.h
 .\objects\seniortask.o: ..\Middlewares\MS5611\ms5611.h
+.\objects\seniortask.o: ..\FreeRTOS\include\semphr.h
+.\objects\seniortask.o: ..\FreeRTOS\include\queue.h

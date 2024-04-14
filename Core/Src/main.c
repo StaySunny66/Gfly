@@ -68,7 +68,7 @@ int main(void)
 												
 												
 	 Start_Usart_Task();
-	 Start_Senior_Task();
+	 initSeniorTask();
 	 start_Main_Fly_Task();
 												
 	

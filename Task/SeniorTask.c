@@ -6,27 +6,28 @@
 #include "myiic.h"
 #include "mpu6050.h"
 #include "ms5611.h"
-
+#include <semphr.h>
 
 
 
 static TaskHandle_t Mpu6050Task_Handle = NULL;
 static TaskHandle_t MS5611Task_Handle = NULL;
+static TaskHandle_t InitTask_Handle = NULL;
 
+SemaphoreHandle_t xMutex ;
 
 static void MS5611Task(void* parameter){
 	
-		MS561101BA_Init();
-	
-	// 获取基准高度
-	
-	caculate_High(10);
+
 	
 	for(;;){
 		
-		printf("fly high = %f \r\n",get_High());
-		
-		
+		if(xSemaphoreTake(xMutex, portMAX_DELAY) == pdTRUE) {
+           
+			
+			   printf("fly high = %f \r\n",get_High());
+         xSemaphoreGive(xMutex); // 释放信号量
+      }
 		vTaskDelay(100);  // 500 ms 计算一次高度
 
 	}
@@ -36,9 +37,9 @@ static void MS5611Task(void* parameter){
 
 static void Mpu6050Task(void* parameter){
 	
-	IIC_Init();
-	//MPU6050_initialize();     //=====MPU6050初始化	
-	//DMP_Init();
+	
+	
+	
 
 	/// 角速度
 	short gyrox,gyroy,gyroz;
@@ -50,22 +51,39 @@ static void Mpu6050Task(void* parameter){
 
 	for(;;){
 		
-		//	Read_DMP(&current_pitch,&current_roll,&current_yaw);      // 获取三个角度
-    //	MPU_Get_Gyroscope(&gyroy,&gyrox,&gyroz);                  // 获取三个角速度
-		//	printf("P : %.2f  R :%.2f  Y :%.2f  GX: %d GY: %d GZ: %d \r\n ",
-				//		current_pitch,current_roll,current_yaw,gyrox,gyroy,gyroz);
-		
-		  vTaskDelay(8);  //  1 tick  = 1ms 
+		if(xSemaphoreTake(xMutex, portMAX_DELAY) == pdTRUE) {
+           
+				Read_DMP(&current_pitch,&current_roll,&current_yaw);      // 获取三个角度
+        MPU_Get_Gyroscope(&gyroy,&gyrox,&gyroz);                  // 获取三个角速度
+        xSemaphoreGive(xMutex);                                   // 释放信号量
+			
+     }
+		printf("P : %.2f  R :%.2f  Y :%.2f  GX: %d GY: %d GZ: %d \r\n ",
+						current_pitch,current_roll,current_yaw,gyrox,gyroy,gyroz);
+		vTaskDelay(8);  //  1 tick  = 1ms 
 	}
 }
 
 
 
 
-void Start_Senior_Task(){
-	
 
+
+
+static void Start_Senior_Task(void* parameter){
 	
+	   printf("hi");
+	
+     xMutex = xSemaphoreCreateMutex();
+	   IIC_Init();
+			
+		 MS561101BA_Init();
+		 caculate_High(10);
+			
+		 MPU6050_initialize();     //=====MPU6050初始化	
+		 DMP_Init();
+
+		
 		 xTaskCreate((TaskFunction_t )Mpu6050Task,  /* 任务入口函数 */
 								(const char*    )"Mpu6050Task", /* 任务名字 */
 								(uint16_t       )512,           /* 任务栈大小 */
@@ -78,11 +96,28 @@ void Start_Senior_Task(){
 								(void*          )NULL,          /* 任务入口函数参数 */
 								(UBaseType_t    )1,             /* 任务的优先级 */
 								(TaskHandle_t*  )&MS5611Task_Handle);/* 任务控制块指针 */
-				
-		 return ;
+								
+		vTaskDelete(NULL); // 删除当前任务	
+		return ;
 }
 
 
 
+
+
+void initSeniorTask(){
+	
+	   printf("initSenior");
+
+		 xTaskCreate((TaskFunction_t )Start_Senior_Task,  /* 任务入口函数 */
+								(const char*    )"InitTask_Handle", /* 任务名字 */
+								(uint16_t       )512,           /* 任务栈大小 */
+								(void*          )NULL,          /* 任务入口函数参数 */
+								(UBaseType_t    )0,             /* 任务的优先级 */
+								(TaskHandle_t*  )&InitTask_Handle);/* 任务控制块指针 */
+    printf("initSeniorFinish");
+     return ;
+
+}
 
 

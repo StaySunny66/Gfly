@@ -3,7 +3,7 @@
 
 
 //   创建传感器类任务
-void Start_Senior_Task(void);
+void initSeniorTask(void);
 
 
 

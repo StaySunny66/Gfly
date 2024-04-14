@@ -85,14 +85,20 @@ static void GflyTask(void* parameter){
 
 
 // PID 主线程
+// 在这里，实现无人机的飞控主代码
 static void Fly_PidTask(void* parameter){
 
 	for(;;){
 		
 		
+		
+	  // 在这里读取获取传感器数据
+		
+		//导入 Gfly 飞行代码
+		//double_PID();
+		
 
-    vTaskDelay(500);   /* 延时500个tick */
-
+    vTaskDelay(5);   /* 延时500个tick */
 
 	}
 }

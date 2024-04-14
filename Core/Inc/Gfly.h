@@ -94,6 +94,7 @@ void Gfly_Event_Thread(void);
 // PID ×´Ì¬·¢ËÍ
 void sendPid(void);
 
+void double_PID();
 
 
 // ¾É°æ PID ÔËËãº¯Êý

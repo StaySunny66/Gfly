@@ -1,5 +1,5 @@
 Dependencies for Project 'template', Target 'STM32F4x1': (DO NOT MODIFY !)
-F (..\Core\Src\main.c)(0x660D5FFA)(--c99 -c --cpu Cortex-M4.fp -g -W -O2 --apcs=interwork --split_sections -I ..\MDK-ARM -I ..\Core\Inc -I ..\Drivers\STM32F4xx_StdPeriph_Driver\inc -I ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\Middlewares\delay -I ..\Middlewares\gpio -I ..\Middlewares\tim -I ..\Middlewares\usart -I ..\Middlewares\motor -I ..\Middlewares -I ..\Middlewares\I2C -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\Middlewares\MPU6050 -I ..\Middlewares\MPU6050\DMP -I ..\Middlewares\MS5611 -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM4F -I ..\FreeRTOS -I ..\Task -I ..\Middlewares\LED-IC:\Users\gxyos\Desktop\RTOS\Gfly_os\MDK-ARM\RTE-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.9.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F401xC -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (..\Core\Src\main.c)(0x661B46A1)(--c99 -c --cpu Cortex-M4.fp -g -W -O2 --apcs=interwork --split_sections -I ..\MDK-ARM -I ..\Core\Inc -I ..\Drivers\STM32F4xx_StdPeriph_Driver\inc -I ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\Middlewares\delay -I ..\Middlewares\gpio -I ..\Middlewares\tim -I ..\Middlewares\usart -I ..\Middlewares\motor -I ..\Middlewares -I ..\Middlewares\I2C -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\Middlewares\MPU6050 -I ..\Middlewares\MPU6050\DMP -I ..\Middlewares\MS5611 -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM4F -I ..\FreeRTOS -I ..\Task -I ..\Middlewares\LED-IC:\Users\gxyos\Desktop\RTOS\Gfly_os\MDK-ARM\RTE-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.9.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F401xC -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (..\Middlewares\delay\delay.h)(0x65912383)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
 I (..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x65A5E02A)
@@ -32,7 +32,7 @@ I (..\Drivers\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x581CC67B)
 I (..\Middlewares\usart\usart.h)(0x658E78D4)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x574E3E26)
 I (..\Middlewares\motor\motor.h)(0x65A5EEBA)
-I (..\Core\Inc\gfly.h)(0x660D1DB2)
+I (..\Core\Inc\gfly.h)(0x66150D19)
 I (..\Middlewares\I2C\myiic.h)(0x5368BC34)
 I (..\SYSTEM\sys\sys.h)(0x55CC1471)
 I (..\Middlewares\MPU6050\mpu6050.h)(0x65A3D731)
@@ -52,7 +52,7 @@ I (..\FreeRTOS\include\mpu_wrappers.h)(0x64020E50)
 I (..\FreeRTOS\include\task.h)(0x64020E50)
 I (..\FreeRTOS\include\list.h)(0x64020E50)
 I (..\Task\UsartTask.h)(0x660D2043)
-I (..\Task\SeniorTask.h)(0x660D1A4F)
+I (..\Task\SeniorTask.h)(0x661B464A)
 I (..\Middlewares\LED\led.h)(0x660D163F)
 I (..\Task\MainFlyTask.h)(0x660D4BB4)
 F (..\Core\Src\stm32f4xx_it.c)(0x660CB626)(--c99 -c --cpu Cortex-M4.fp -g -W -O2 --apcs=interwork --split_sections -I ..\MDK-ARM -I ..\Core\Inc -I ..\Drivers\STM32F4xx_StdPeriph_Driver\inc -I ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\Middlewares\delay -I ..\Middlewares\gpio -I ..\Middlewares\tim -I ..\Middlewares\usart -I ..\Middlewares\motor -I ..\Middlewares -I ..\Middlewares\I2C -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\Middlewares\MPU6050 -I ..\Middlewares\MPU6050\DMP -I ..\Middlewares\MS5611 -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM4F -I ..\FreeRTOS -I ..\Task -I ..\Middlewares\LED-IC:\Users\gxyos\Desktop\RTOS\Gfly_os\MDK-ARM\RTE-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.9.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F401xC -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\objects\stm32f4xx_it.o --omf_browse .\objects\stm32f4xx_it.crf --depend .\objects\stm32f4xx_it.d)
@@ -87,7 +87,7 @@ I (..\Drivers\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x581CC67B)
 I (..\Drivers\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x581CC67B)
 I (..\Core\Inc\main.h)(0x658E52C0)
 I (..\Middlewares\delay\delay.h)(0x65912383)
-F (..\Core\Src\system_stm32f4xx.c)(0x659A9E26)(--c99 -c --cpu Cortex-M4.fp -g -W -O2 --apcs=interwork --split_sections -I ..\MDK-ARM -I ..\Core\Inc -I ..\Drivers\STM32F4xx_StdPeriph_Driver\inc -I ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\Middlewares\delay -I ..\Middlewares\gpio -I ..\Middlewares\tim -I ..\Middlewares\usart -I ..\Middlewares\motor -I ..\Middlewares -I ..\Middlewares\I2C -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\Middlewares\MPU6050 -I ..\Middlewares\MPU6050\DMP -I ..\Middlewares\MS5611 -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM4F -I ..\FreeRTOS -I ..\Task -I ..\Middlewares\LED-IC:\Users\gxyos\Desktop\RTOS\Gfly_os\MDK-ARM\RTE-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.9.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F401xC -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\objects\system_stm32f4xx.o --omf_browse .\objects\system_stm32f4xx.crf --depend .\objects\system_stm32f4xx.d)
+F (..\Core\Src\system_stm32f4xx.c)(0x661B3DFC)(--c99 -c --cpu Cortex-M4.fp -g -W -O2 --apcs=interwork --split_sections -I ..\MDK-ARM -I ..\Core\Inc -I ..\Drivers\STM32F4xx_StdPeriph_Driver\inc -I ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\Middlewares\delay -I ..\Middlewares\gpio -I ..\Middlewares\tim -I ..\Middlewares\usart -I ..\Middlewares\motor -I ..\Middlewares -I ..\Middlewares\I2C -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\Middlewares\MPU6050 -I ..\Middlewares\MPU6050\DMP -I ..\Middlewares\MS5611 -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM4F -I ..\FreeRTOS -I ..\Task -I ..\Middlewares\LED-IC:\Users\gxyos\Desktop\RTOS\Gfly_os\MDK-ARM\RTE-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.9.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F401xC -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\objects\system_stm32f4xx.o --omf_browse .\objects\system_stm32f4xx.crf --depend .\objects\system_stm32f4xx.d)
 I (..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x65A5E02A)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cm4.h)(0x5625B70C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
@@ -116,8 +116,8 @@ I (..\Drivers\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x581CC67B)
 I (..\Drivers\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x581CC67B)
 I (..\Drivers\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x581CC67B)
 I (..\Drivers\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x581CC67B)
-F (..\Core\Src\Gfly.c)(0x660D5FFA)(--c99 -c --cpu Cortex-M4.fp -g -W -O2 --apcs=interwork --split_sections -I ..\MDK-ARM -I ..\Core\Inc -I ..\Drivers\STM32F4xx_StdPeriph_Driver\inc -I ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\Middlewares\delay -I ..\Middlewares\gpio -I ..\Middlewares\tim -I ..\Middlewares\usart -I ..\Middlewares\motor -I ..\Middlewares -I ..\Middlewares\I2C -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\Middlewares\MPU6050 -I ..\Middlewares\MPU6050\DMP -I ..\Middlewares\MS5611 -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM4F -I ..\FreeRTOS -I ..\Task -I ..\Middlewares\LED-IC:\Users\gxyos\Desktop\RTOS\Gfly_os\MDK-ARM\RTE-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.9.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F401xC -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\objects\gfly.o --omf_browse .\objects\gfly.crf --depend .\objects\gfly.d)
-I (..\Core\Inc\Gfly.h)(0x660D1DB2)
+F (..\Core\Src\Gfly.c)(0x661B3D96)(--c99 -c --cpu Cortex-M4.fp -g -W -O2 --apcs=interwork --split_sections -I ..\MDK-ARM -I ..\Core\Inc -I ..\Drivers\STM32F4xx_StdPeriph_Driver\inc -I ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\Middlewares\delay -I ..\Middlewares\gpio -I ..\Middlewares\tim -I ..\Middlewares\usart -I ..\Middlewares\motor -I ..\Middlewares -I ..\Middlewares\I2C -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\Middlewares\MPU6050 -I ..\Middlewares\MPU6050\DMP -I ..\Middlewares\MS5611 -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM4F -I ..\FreeRTOS -I ..\Task -I ..\Middlewares\LED-IC:\Users\gxyos\Desktop\RTOS\Gfly_os\MDK-ARM\RTE-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.9.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F401xC -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\objects\gfly.o --omf_browse .\objects\gfly.crf --depend .\objects\gfly.d)
+I (..\Core\Inc\Gfly.h)(0x66150D19)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
 I (..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x65A5E02A)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cm4.h)(0x5625B70C)
@@ -481,7 +481,7 @@ I (..\Drivers\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x581CC67B)
 I (..\Drivers\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x581CC67B)
 I (..\Drivers\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x581CC67B)
 I (..\Drivers\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x581CC67B)
-I (..\Core\Inc\Gfly.h)(0x660D1DB2)
+I (..\Core\Inc\Gfly.h)(0x66150D19)
 F (..\Middlewares\motor\motor.c)(0x65AE2CC9)(--c99 -c --cpu Cortex-M4.fp -g -W -O2 --apcs=interwork --split_sections -I ..\MDK-ARM -I ..\Core\Inc -I ..\Drivers\STM32F4xx_StdPeriph_Driver\inc -I ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\Middlewares\delay -I ..\Middlewares\gpio -I ..\Middlewares\tim -I ..\Middlewares\usart -I ..\Middlewares\motor -I ..\Middlewares -I ..\Middlewares\I2C -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\Middlewares\MPU6050 -I ..\Middlewares\MPU6050\DMP -I ..\Middlewares\MS5611 -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM4F -I ..\FreeRTOS -I ..\Task -I ..\Middlewares\LED-IC:\Users\gxyos\Desktop\RTOS\Gfly_os\MDK-ARM\RTE-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.9.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F401xC -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\objects\motor.o --omf_browse .\objects\motor.crf --depend .\objects\motor.d)
 I (..\Middlewares\motor\motor.h)(0x65A5EEBA)
 I (..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x65A5E02A)
@@ -513,7 +513,7 @@ I (..\Drivers\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x581CC67B)
 I (..\Drivers\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x581CC67B)
 I (..\Drivers\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x581CC67B)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x574E3E26)
-I (..\Core\Inc\gfly.h)(0x660D1DB2)
+I (..\Core\Inc\gfly.h)(0x66150D19)
 F (..\Middlewares\LED\led.c)(0x660D1623)(--c99 -c --cpu Cortex-M4.fp -g -W -O2 --apcs=interwork --split_sections -I ..\MDK-ARM -I ..\Core\Inc -I ..\Drivers\STM32F4xx_StdPeriph_Driver\inc -I ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\Middlewares\delay -I ..\Middlewares\gpio -I ..\Middlewares\tim -I ..\Middlewares\usart -I ..\Middlewares\motor -I ..\Middlewares -I ..\Middlewares\I2C -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\Middlewares\MPU6050 -I ..\Middlewares\MPU6050\DMP -I ..\Middlewares\MS5611 -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM4F -I ..\FreeRTOS -I ..\Task -I ..\Middlewares\LED-IC:\Users\gxyos\Desktop\RTOS\Gfly_os\MDK-ARM\RTE-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.9.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F401xC -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\objects\led.o --omf_browse .\objects\led.crf --depend .\objects\led.d)
 I (..\Middlewares\LED\led.h)(0x660D163F)
 I (..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x65A5E02A)
@@ -899,7 +899,7 @@ I (..\FreeRTOS\port\RVDS\ARM_CM4F\portmacro.h)(0x64020E50)
 I (..\FreeRTOS\include\mpu_wrappers.h)(0x64020E50)
 I (..\FreeRTOS\include\task.h)(0x64020E50)
 I (..\FreeRTOS\include\list.h)(0x64020E50)
-F (..\Task\MainFlyTask.c)(0x660D5B5C)(--c99 -c --cpu Cortex-M4.fp -g -W -O2 --apcs=interwork --split_sections -I ..\MDK-ARM -I ..\Core\Inc -I ..\Drivers\STM32F4xx_StdPeriph_Driver\inc -I ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\Middlewares\delay -I ..\Middlewares\gpio -I ..\Middlewares\tim -I ..\Middlewares\usart -I ..\Middlewares\motor -I ..\Middlewares -I ..\Middlewares\I2C -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\Middlewares\MPU6050 -I ..\Middlewares\MPU6050\DMP -I ..\Middlewares\MS5611 -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM4F -I ..\FreeRTOS -I ..\Task -I ..\Middlewares\LED-IC:\Users\gxyos\Desktop\RTOS\Gfly_os\MDK-ARM\RTE-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.9.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F401xC -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\objects\mainflytask.o --omf_browse .\objects\mainflytask.crf --depend .\objects\mainflytask.d)
+F (..\Task\MainFlyTask.c)(0x661B3D96)(--c99 -c --cpu Cortex-M4.fp -g -W -O2 --apcs=interwork --split_sections -I ..\MDK-ARM -I ..\Core\Inc -I ..\Drivers\STM32F4xx_StdPeriph_Driver\inc -I ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\Middlewares\delay -I ..\Middlewares\gpio -I ..\Middlewares\tim -I ..\Middlewares\usart -I ..\Middlewares\motor -I ..\Middlewares -I ..\Middlewares\I2C -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\Middlewares\MPU6050 -I ..\Middlewares\MPU6050\DMP -I ..\Middlewares\MS5611 -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM4F -I ..\FreeRTOS -I ..\Task -I ..\Middlewares\LED-IC:\Users\gxyos\Desktop\RTOS\Gfly_os\MDK-ARM\RTE-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.9.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F401xC -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\objects\mainflytask.o --omf_browse .\objects\mainflytask.crf --depend .\objects\mainflytask.d)
 I (..\Task\MainFlyTask.h)(0x660D4BB4)
 I (..\FreeRTOS\include\FreeRTOS.h)(0x64020E50)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x574E3E26)
@@ -914,9 +914,9 @@ I (..\FreeRTOS\include\task.h)(0x64020E50)
 I (..\FreeRTOS\include\list.h)(0x64020E50)
 I (..\FreeRTOS\include\semphr.h)(0x64020E50)
 I (..\FreeRTOS\include\queue.h)(0x64020E50)
-I (..\Core\Inc\gfly.h)(0x660D1DB2)
+I (..\Core\Inc\gfly.h)(0x66150D19)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x574E3E26)
-F (..\Task\UsartTask.c)(0x660D59B1)(--c99 -c --cpu Cortex-M4.fp -g -W -O2 --apcs=interwork --split_sections -I ..\MDK-ARM -I ..\Core\Inc -I ..\Drivers\STM32F4xx_StdPeriph_Driver\inc -I ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\Middlewares\delay -I ..\Middlewares\gpio -I ..\Middlewares\tim -I ..\Middlewares\usart -I ..\Middlewares\motor -I ..\Middlewares -I ..\Middlewares\I2C -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\Middlewares\MPU6050 -I ..\Middlewares\MPU6050\DMP -I ..\Middlewares\MS5611 -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM4F -I ..\FreeRTOS -I ..\Task -I ..\Middlewares\LED-IC:\Users\gxyos\Desktop\RTOS\Gfly_os\MDK-ARM\RTE-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.9.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F401xC -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\objects\usarttask.o --omf_browse .\objects\usarttask.crf --depend .\objects\usarttask.d)
+F (..\Task\UsartTask.c)(0x660EBCB5)(--c99 -c --cpu Cortex-M4.fp -g -W -O2 --apcs=interwork --split_sections -I ..\MDK-ARM -I ..\Core\Inc -I ..\Drivers\STM32F4xx_StdPeriph_Driver\inc -I ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\Middlewares\delay -I ..\Middlewares\gpio -I ..\Middlewares\tim -I ..\Middlewares\usart -I ..\Middlewares\motor -I ..\Middlewares -I ..\Middlewares\I2C -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\Middlewares\MPU6050 -I ..\Middlewares\MPU6050\DMP -I ..\Middlewares\MS5611 -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM4F -I ..\FreeRTOS -I ..\Task -I ..\Middlewares\LED-IC:\Users\gxyos\Desktop\RTOS\Gfly_os\MDK-ARM\RTE-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.9.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F401xC -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\objects\usarttask.o --omf_browse .\objects\usarttask.crf --depend .\objects\usarttask.d)
 I (..\Task\UsartTask.h)(0x660D2043)
 I (..\FreeRTOS\include\FreeRTOS.h)(0x64020E50)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x574E3E26)
@@ -960,8 +960,8 @@ I (..\Drivers\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x581CC67B)
 I (..\Drivers\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x581CC67B)
 I (..\Drivers\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x581CC67B)
 I (..\Middlewares\LED\led.h)(0x660D163F)
-F (..\Task\SeniorTask.c)(0x660D603B)(--c99 -c --cpu Cortex-M4.fp -g -W -O2 --apcs=interwork --split_sections -I ..\MDK-ARM -I ..\Core\Inc -I ..\Drivers\STM32F4xx_StdPeriph_Driver\inc -I ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\Middlewares\delay -I ..\Middlewares\gpio -I ..\Middlewares\tim -I ..\Middlewares\usart -I ..\Middlewares\motor -I ..\Middlewares -I ..\Middlewares\I2C -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\Middlewares\MPU6050 -I ..\Middlewares\MPU6050\DMP -I ..\Middlewares\MS5611 -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM4F -I ..\FreeRTOS -I ..\Task -I ..\Middlewares\LED-IC:\Users\gxyos\Desktop\RTOS\Gfly_os\MDK-ARM\RTE-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.9.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F401xC -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\objects\seniortask.o --omf_browse .\objects\seniortask.crf --depend .\objects\seniortask.d)
-I (..\Task\SeniorTask.h)(0x660D1A4F)
+F (..\Task\SeniorTask.c)(0x661B4702)(--c99 -c --cpu Cortex-M4.fp -g -W -O2 --apcs=interwork --split_sections -I ..\MDK-ARM -I ..\Core\Inc -I ..\Drivers\STM32F4xx_StdPeriph_Driver\inc -I ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\Middlewares\delay -I ..\Middlewares\gpio -I ..\Middlewares\tim -I ..\Middlewares\usart -I ..\Middlewares\motor -I ..\Middlewares -I ..\Middlewares\I2C -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\Middlewares\MPU6050 -I ..\Middlewares\MPU6050\DMP -I ..\Middlewares\MS5611 -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM4F -I ..\FreeRTOS -I ..\Task -I ..\Middlewares\LED-IC:\Users\gxyos\Desktop\RTOS\Gfly_os\MDK-ARM\RTE-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.9.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F401xC -DUSE_STDPERIPH_DRIVER -DSTM32F401xx-o .\objects\seniortask.o --omf_browse .\objects\seniortask.crf --depend .\objects\seniortask.d)
+I (..\Task\SeniorTask.h)(0x661B464A)
 I (..\FreeRTOS\include\FreeRTOS.h)(0x64020E50)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x574E3E26)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
@@ -1010,4 +1010,6 @@ I (..\Middlewares\MPU6050\DMP\inv_mpu.h)(0x559E0F23)
 I (..\Middlewares\MPU6050\DMP\inv_mpu_dmp_motion_driver.h)(0x559E0F23)
 I (..\Middlewares\usart\usart.h)(0x658E78D4)
 I (..\Middlewares\MS5611\ms5611.h)(0x65F51974)
+I (..\FreeRTOS\include\semphr.h)(0x64020E50)
+I (..\FreeRTOS\include\queue.h)(0x64020E50)
 F (..\Task\GflyConfig.h)(0x660D1FF6)()
