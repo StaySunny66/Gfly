@@ -224,7 +224,11 @@ void USART6_IRQHandler(void){
 		
 		uint8_t data = USART_ReceiveData(USART6);
     BaseType_t xHigherPriorityTaskWoken = pdFALSE;
-    xQueueSendFromISR(Usart6RxQueue, &data, &xHigherPriorityTaskWoken);
+		
+		/// Usart6 默认为 调试使用的接口
+		/// 为方便调试  重定向到 U1
+      xQueueSendFromISR(Usart6RxQueue, &data, &xHigherPriorityTaskWoken);
+		 //xQueueSendFromISR(Usart1RxQueue, &data, &xHigherPriorityTaskWoken); 
     portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 		
 	}
@@ -239,7 +243,7 @@ void USART1_IRQHandler(void){
 		
 		uint8_t data = USART_ReceiveData(USART1);
     BaseType_t xHigherPriorityTaskWoken = pdFALSE;
-    xQueueSendFromISR(Usart6RxQueue, &data, &xHigherPriorityTaskWoken);
+    xQueueSendFromISR(Usart1RxQueue, &data, &xHigherPriorityTaskWoken);
     portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 		
 	}

@@ -64,7 +64,7 @@ int main(void)
 	USART1_init(9600);  
 	USART2_init(19200);    //初始化串口2   光流计接口
 	USART6_init(230400);  
-  
+  motorInit();
 	
 	 xReturn = xTaskCreate((TaskFunction_t )AppTask,  /* 任务入口函数 */
                         (const char*    )"AppTask",/* 任务名字 */

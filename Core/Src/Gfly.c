@@ -479,42 +479,9 @@ int yaw_inner_cac(float hope_Gyroz,float current_Gyroz){
 /// PID串级
 void double_PID(){
 	
-	// 输出变量
-	
-	static float last_h = 0.0f;  // 上一次的高度值
-	
+
+	// 三组输出
   float Pitch_OUT,Roll_OUT,Yaw_OUT;
-	
-	
-	///// OS 适配
-	
-	
-	
-	
-	// 获取传感器数值
-	unsigned int press; 
-	int temp;
-	// 获取当前姿态角度  
-	//Read_DMP(&current_pitch,&current_roll,&current_yaw);      // 获取三个角度
-	//MPU_Get_Gyroscope(&gyroy,&gyrox,&gyroz);                // 获取角速度
-	
-                                      
-	temperature1 = temp/100.0f;   // 温度格式化
-	pressure = press/100.0f;      // 气压格式化
-	
-	
-	//Now_High = get_High(16,pressure);
-	
-	
-	// 不是0
-	if(last_h!=0){
-	    
-	  	//  这个速度 受函数调用周期影响    // 0.001   1ms
-		 v_speed  =  (last_h - Now_High) / 0.01 ;
-	
-	}
-	
-	last_h = Now_High;
 	
 	// 安全检查   
 	Gfly_Safety_Check();
@@ -527,10 +494,12 @@ void double_PID(){
 			apply_motor_output(0, 0, 0);
 			return;
 	}
+	
 	// 计算电机数值
-	//  Pitch 前倾 负数
+	// Pitch 前倾 负数
 	
 	Pitch_OUT = 0;Roll_OUT = 0;Yaw_OUT = 0;
+	
 	
 	Pitch_OUT = pitch_outer_cac(pitch_C,current_pitch);
 	Pitch_OUT = pitch_inner_cac(gyrox,Pitch_OUT);
@@ -542,9 +511,7 @@ void double_PID(){
 	Yaw_OUT = yaw_inner_cac(gyroz,Yaw_OUT);
 	
 	 
-	
 	// 应用电机
-	
 	apply_motor_output(Pitch_OUT, Roll_OUT, Yaw_OUT);
 
 
@@ -557,7 +524,9 @@ void double_PID(){
 ////////    单级PID算法
 // 俯仰角
 // 输入 期望的角度 当前角度
+
 float pitch_I = 0.0f;
+
 float last_pitch_pid_v = 0.0f;
 float pid_signal_pitch(float hope,float now_val){
 	float err , out_v;
@@ -624,7 +593,10 @@ float pid_signal_roll(float hope,float now_val){
 // 输入 期望的角度 当前角度
 float yaw_I = 0.0f;
 float last_yaw_pid_v = 0.0f;
+
+
 float pid_signal_yaw(float hope,float now_val){
+	
 	float err , out_v;
 	err = hope - now_val;
 	
@@ -653,68 +625,19 @@ float pid_signal_yaw(float hope,float now_val){
 }
 
 
-
-///  单级PID算法 
-
-void  Signal_PID(){
-        
-	
-			 Gfly_Safety_Check();
-	     float Pitch_OUT,Roll_OUT,Yaw_OUT;
-
-	     // get the senior data;
-	     unsigned int press; 
-	     int temp;
-		   // 获取当前姿态角度  
-	     Read_DMP(&current_pitch,&current_roll,&current_yaw);
-			 //BMP280_ReadPressureTemperature(&press,&temp);            //bmp280获取气压值和温度
-		   MPU_Get_Gyroscope(&gyroy,&gyrox,&gyroz);                // 获取角速度
-
-
-	     temperature1 = temp/100.0f;
-			 pressure = press/100.0f;
-	
-	
-	      // IF THE PID DISCONNECT TO THE MOTOR
-	      if(PID_EN==DISABLE){
-				    // Just set the throttle value to the motor
-				  apply_motor_output(0, 0, 0);
-
-				    return;
-				}
-				
-				
-				Pitch_OUT = 0;Roll_OUT = 0;Yaw_OUT = 0;
-	
-				Pitch_OUT = pid_signal_pitch(pitch_C,current_pitch);
-				
-				Roll_OUT = pid_signal_roll(roll_C,current_roll);
-				
-				Yaw_OUT = pid_signal_yaw(yaw_C,current_yaw);
-
-			apply_motor_output(Pitch_OUT, Roll_OUT, Yaw_OUT);
-
-				
-				
-       
-
-}
-
-
-
-
 void  PID_I_Clean(){
 
   // PID 积分清零
- //error_roll_prev = 0;  integral_roll = 0;
- //error_pitch_prev = 0; integral_pitch = 0;
- //error_yaw_prev = 0;   integral_yaw = 0;
+  //error_roll_prev = 0;  integral_roll = 0;
+  //error_pitch_prev = 0; integral_pitch = 0;
+  //error_yaw_prev = 0;   integral_yaw = 0;
 
 
 }
 
-/// 向遥控器发送设备状态
 
+
+/// 向遥控器发送设备状态
 void  RecData(){
 
 		// 发送软件版本
@@ -722,7 +645,6 @@ void  RecData(){
 	  // 发送 PID 数据
 	  PID_SEND = 3;
 	  
-
 }
 
 void show_PID(){
@@ -770,12 +692,10 @@ void show_PID(){
 
 
 
-
 void sendPid(){
 	   
 	  // PID发送位
 	  
-	
 	  if(PID_SEND < 3)  return;
 	  show_PID();
 	  PID_SEND = 0;
@@ -813,8 +733,9 @@ void sendPid(){
     pidSendData(PID_SET_I, PID_SET_OUTER | PID_SET_HIGH, PID_OUTER_HIGH_KI);
     pidSendData(PID_SET_D, PID_SET_OUTER | PID_SET_HIGH, PID_OUTER_HIGH_KD);
 
-	
 }
+
+
 
 
 /////  基本支持 函数
@@ -833,6 +754,8 @@ unsigned char evenParity(unsigned char byte) {
 }
 
 
+
+
 unsigned char dataEvenParity(unsigned char  packet[]){
     int i = 0;
     unsigned char checkData = 0x00;
@@ -845,6 +768,8 @@ unsigned char dataEvenParity(unsigned char  packet[]){
     }
     return checkData;
 }
+
+
 
 
 unsigned char dataEvenParityRec(unsigned char  packet[]){
@@ -861,8 +786,9 @@ unsigned char dataEvenParityRec(unsigned char  packet[]){
 }
 
 
-/// 发送函数
 
+
+/// 发送函数
 void sendPacket(unsigned char * packet){
 	  
 	  int i = 0;
@@ -870,8 +796,8 @@ void sendPacket(unsigned char * packet){
 
     
     for(i = 0;i < 6 ; i++) {
-			while (!USART_GetFlagStatus(USART2, USART_FLAG_TC));
-			USART_SendData(USART2, (uint8_t)packet[i]);
+			while (!USART_GetFlagStatus(USART1, USART_FLAG_TC));
+			USART_SendData(USART1, (uint8_t)packet[i]);
 		}
      
     SendCount++;

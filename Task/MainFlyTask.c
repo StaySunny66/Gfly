@@ -113,14 +113,10 @@ static void Fly_PidTask(void* parameter){
 
 	for(;;){
 		
-		
-		
 	  // 在这里读取获取传感器数据
-		
 		//导入 Gfly 飞行代码
-		//double_PID();
+		double_PID();
 		
-
     vTaskDelay(5);   /* 延时500个tick */
 
 	}
