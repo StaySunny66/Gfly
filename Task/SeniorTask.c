@@ -10,6 +10,20 @@
 
 
 
+/// 任务会读取这些数据
+extern float current_yaw   ;   // 偏航角
+extern float current_pitch ;   // 俯仰角
+extern float current_roll  ;   // 翻滚角
+
+extern short gyrox;
+extern short gyroy;
+extern short gyroz;
+
+extern float Now_High;
+
+
+
+
 static TaskHandle_t Mpu6050Task_Handle = NULL;
 static TaskHandle_t MS5611Task_Handle = NULL;
 static TaskHandle_t InitTask_Handle = NULL;
@@ -25,7 +39,7 @@ static void MS5611Task(void* parameter){
 		if(xSemaphoreTake(xMutex, portMAX_DELAY) == pdTRUE) {
            
 			
-			   printf("fly high = %f \r\n",get_High());
+			   Now_High = get_High();
          xSemaphoreGive(xMutex); // 释放信号量
       }
 		vTaskDelay(100);  // 500 ms 计算一次高度
@@ -37,19 +51,8 @@ static void MS5611Task(void* parameter){
 
 static void Mpu6050Task(void* parameter){
 	
-	
-	
-	
-
-	/// 角速度
-	short gyrox,gyroy,gyroz;
-		
-	//角度
-	float current_yaw   =  0;   // 偏航角
-	float current_pitch =  0;   // 俯仰角
-	float current_roll  =  0;   // 翻滚角
-
 	for(;;){
+		
 		
 		if(xSemaphoreTake(xMutex, portMAX_DELAY) == pdTRUE) {
            
@@ -58,9 +61,10 @@ static void Mpu6050Task(void* parameter){
         xSemaphoreGive(xMutex);                                   // 释放信号量
 			
      }
-		printf("P : %.2f  R :%.2f  Y :%.2f  GX: %d GY: %d GZ: %d \r\n ",
-						current_pitch,current_roll,current_yaw,gyrox,gyroy,gyroz);
-		vTaskDelay(8);  //  1 tick  = 1ms 
+
+		 
+		   vTaskDelay(8);  //  1 tick  = 1ms 
+		 
 	}
 }
 
@@ -71,8 +75,6 @@ static void Mpu6050Task(void* parameter){
 
 
 static void Start_Senior_Task(void* parameter){
-	
-	   printf("hi");
 	
      xMutex = xSemaphoreCreateMutex();
 	   IIC_Init();
@@ -107,7 +109,6 @@ static void Start_Senior_Task(void* parameter){
 
 void initSeniorTask(){
 	
-	   printf("initSenior");
 
 		 xTaskCreate((TaskFunction_t )Start_Senior_Task,  /* 任务入口函数 */
 								(const char*    )"InitTask_Handle", /* 任务名字 */
@@ -115,7 +116,8 @@ void initSeniorTask(){
 								(void*          )NULL,          /* 任务入口函数参数 */
 								(UBaseType_t    )0,             /* 任务的优先级 */
 								(TaskHandle_t*  )&InitTask_Handle);/* 任务控制块指针 */
-    printf("initSeniorFinish");
+								
+								
      return ;
 
 }

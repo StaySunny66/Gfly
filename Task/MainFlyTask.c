@@ -13,9 +13,11 @@ QueueHandle_t CmdQueue;
 
 static TaskHandle_t GflyTask_Handle = NULL;
 static TaskHandle_t Fly_PidTask_Handle = NULL;
+static TaskHandle_t GflyCallBack_Handle = NULL;
 
 static void GflyTask(void* parameter);
 static void Fly_PidTask(void* parameter);
+static void GflyCallBack(void* parameter);
 
 
 // **************************************** //
@@ -37,35 +39,42 @@ struct Pid {
 // 启动任务函数
 void start_Main_Fly_Task(){
 	
-	CmdQueue = xQueueCreate(10, sizeof(uint8_t)*7);
+			CmdQueue = xQueueCreate(10, sizeof(uint8_t)*7);
 	
+	    Gfly_SoftWare_Init();
+			
 	
-	xTaskCreate((TaskFunction_t )GflyTask,  /* 任务入口函数 */
-						 (const char*    )"GflyTask", /* 任务名字 */
-						 (uint16_t       )512,           /* 任务栈大小 */
-						 (void*          )NULL,          /* 任务入口函数参数 */
-						 (UBaseType_t    )1,             /* 任务的优先级 */
-						 (TaskHandle_t*  )&GflyTask_Handle);/* 任务控制块指针 */
-						 
-						 
-	xTaskCreate((TaskFunction_t )Fly_PidTask,  /* 任务入口函数 */
-						 (const char*    )"Fly_PidTask", /* 任务名字 */
-						 (uint16_t       )512,           /* 任务栈大小 */
-						 (void*          )NULL,          /* 任务入口函数参数 */
-						 (UBaseType_t    )1,             /* 任务的优先级 */
-						 (TaskHandle_t*  )&Fly_PidTask_Handle);/* 任务控制块指针 */
-
-
-	
-	
-
+	    /* Gfly 通信处理 */	
+			xTaskCreate((TaskFunction_t )GflyTask,  /* 任务入口函数 */
+								 (const char*    )"GflyTask", /* 任务名字 */
+								 (uint16_t       )512,           /* 任务栈大小 */
+								 (void*          )NULL,          /* 任务入口函数参数 */
+								 (UBaseType_t    )1,             /* 任务的优先级 */
+								 (TaskHandle_t*  )&GflyTask_Handle);/* 任务控制块指针 */
+								 
+			/* PID 控制 */					 
+			xTaskCreate((TaskFunction_t )Fly_PidTask,  /* 任务入口函数 */
+								 (const char*    )"Fly_PidTask", /* 任务名字 */
+								 (uint16_t       )512,           /* 任务栈大小 */
+								 (void*          )NULL,          /* 任务入口函数参数 */
+								 (UBaseType_t    )1,             /* 任务的优先级 */
+								 (TaskHandle_t*  )&Fly_PidTask_Handle);/* 任务控制块指针 */
+			
+			/* 地面站回传 */
+			xTaskCreate((TaskFunction_t )GflyCallBack,  /* 任务入口函数 */
+								 (const char*    )"GflyCallBack", /* 任务名字 */
+								 (uint16_t       )512,           /* 任务栈大小 */
+								 (void*          )NULL,          /* 任务入口函数参数 */
+								 (UBaseType_t    )1,             /* 任务的优先级 */
+								 (TaskHandle_t*  )&GflyCallBack_Handle);/* 任务控制块指针 */
+				
 
 			return;
 }
 
 
 
-// Gfly 主线程
+// Gfly通信协议 主线程
 // 控制 线程
 
 // 
@@ -80,6 +89,20 @@ static void GflyTask(void* parameter){
 	}
 }
 
+
+// Gfly通信协议 
+// 地面 回传仍无
+
+// 
+static void GflyCallBack(void* parameter){
+	
+	for(;;){
+			
+		Gfly_Event_Thread();
+		vTaskDelay(300);   // 500ms
+		
+	}
+}
 
 
 

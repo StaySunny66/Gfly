@@ -46,25 +46,16 @@
 // 最小积分开始油门
 #define MIN_I_EN 25
 
+
+
+
+
+
 // 启动时高度记录
 float Basic_High = 0.0f;
-// 海拔高度
-float Now_High = 0.0f;
+
 // 垂直速度
 float v_speed = 0.0f;
-
-//系统时间
-unsigned long SysTime_n100ms = 0; 
-// SysLed 亮灭状态
-unsigned char Sys_Led = 1;
-// SysLed 知识状态
-unsigned char SysLed_State = SysLed_Lock;
-
-/// 角速度
-short gyrox,gyroy,gyroz;
-
-// 机械零点
-float Roll_Zero,Pitch_Zero,Yaw_Zero,High_Zero;
 
 
 void sendPid();
@@ -76,16 +67,13 @@ void Signal_PID();
 
 // PID 发送
 unsigned int PID_SEND = 0;
-
 // 飞行安全锁
 unsigned char FLY_BEGIN = 0;
 unsigned char PID_EN = ENABLE;
 
-
 unsigned int ErrCount;
 unsigned int SendCount;
 unsigned int RecCount;
-
 
 unsigned char  a ;
  
@@ -104,23 +92,34 @@ float yawValue = 0;       // 偏航
 
 		
 		
-/// 传感器最新 数据
+/// 传感器最新 数据///////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+///// 全局变量在其他文件会使用到的 ///////////////////////////////////////////////
 		
 //角度
 float current_yaw   =  0;   // 偏航角
 float current_pitch =  0;   // 俯仰角
 float current_roll  =  0;   // 翻滚角
-		
-		
-//温度
+
+/// 角速度
+short gyrox,gyroy,gyroz;
+
+// 光流原始数据
+int flow_x;
+int flow_y;	
+//温度  预留
 float temperature1 = 0.0f; 
-float temperature2 ;  
+float temperature2;  
 float temperature3;     
 float temperature4; 
 		
-		
 // 气压
 float pressure = 0.0f;
+
+// 海拔高度
+float Now_High = 0.0f;
+
 		
 		
 /// 地面端要求姿态
@@ -130,14 +129,7 @@ float roll_C  =  0;    // 翻滚角
 int throttle_C = 50;  // 油门数据
 		
 		
-/// 误差 
-    
-float yaw_Err = 0;
-float pitch_Err =  0;   // 俯仰角
-float roll_Err  =  0;   // 翻滚角
-
-
-/// PID  CHAT GPT
+/// PID
 int m1;
 int m2;
 int m3;
@@ -188,8 +180,6 @@ float ZERO_roll = 3.0f, ZERO_pitch = 5.5f, ZERO_yaw = 0.0f;
 //   3       4  
 void apply_motor_output(float output_pitch, float output_roll, float output_yaw){
 	
-	
-	
 			if(FLY_BEGIN == 0){
 		 	   setMotor_H_def(0,0,0,0);
          m1 = 0; m2 = 0;	m3 = 0;	m4 = 0;	
@@ -208,158 +198,35 @@ void apply_motor_output(float output_pitch, float output_roll, float output_yaw)
 			if( m4<0 ) m4 = 0; if( m4> 1000) m4 = 1000;	
 
 		  
-		 
-	
-	       setMotor_H_def(m1,m2,m3,m4);
-	 
+	    setMotor_H_def(m1,m2,m3,m4);
 }
 
 
 
-
-
-// Gfly  心跳 函数
-void Gfly_Tick(){
-	
-		static unsigned char MainThreadTime  = 0;
-	  static unsigned int EventThreadTime  = 0;
-		static unsigned int TimeHandel       = 0;
-
-	  MainThreadTime ++;EventThreadTime ++;TimeHandel ++ ;
-	
-	  if(MainThreadTime  >= CallMainThreadTime){
-		   MainThreadTime = 0;   // Call  MainThread
-			    //printf("MainThread \r\n");
-			    Gfly_Main_Thread();
-			    
-		
-		}
-		if(EventThreadTime >= CallEventThreadTime){
-		   EventThreadTime = 0;   // Call  EventThread
-			
-			    Gfly_Event_Thread();
-		
-		}
-		
-		if(TimeHandel >= 200){
-		   TimeHandel = 0;   // 系统时间 统计  100 MS 统计一次
-			 SysTime_n100ms ++;
-			 
-			
-			  // 系统指示灯
-				if(SysTime_n100ms%SysLed_State == 0){
-				   if(Sys_Led) {
-						 Sys_Led = 0;
-						 
-						 	GPIO_SetBits(GPIOC,  GPIO_Pin_10);
-					 }else{
-					 	 Sys_Led = 1;
-							GPIO_ResetBits(GPIOC, GPIO_Pin_10);
-					 }
-					
-				}
-			
-		}
-	
-	  
-	
-}
-
-
-
-/// GFLY 硬件初始化
-void  Gfly_HardWare_Init(){
-	
-	USART1_init(9600);    //初始化串口1   Lora 接口
-	USART6_init(230400);  //初始化串口2
-	printf("USART init finished.. \n\r");
-	
-	// PWM   4 路  已实现
-	
-	
-	IIC_Init();
-	
-	
-	//IIC 读写 以实现
-
-	motorInit();
-	printf("Gfly -> Motor Init finished.. \n\r");
-
-	//MPU 6050  Init	
-	printf("Gfly -> MPU6050 Init .. \n\r");
-	MPU6050_initialize();     //=====MPU6050初始化	
-	DMP_Init();
-	
-	printf("Gfly -> BMP280 Init .. \n\r");
-	// BMP 280 inin
-	//BMP280_Init();
-	
-	printf("HardWare init Finished GOOD LUCK ! .. \n\r");
-	
-	delay_ms(1000);
-
-	
-
-}
 
 
 /// Gfly 软件初始化
 void Gfly_SoftWare_Init(){
 	
-	/// 初始换数据
+	/// 读取Flash数据
+	
+	
 	
 	/// 打印版本
 	Gfly_show();
 	
-	//
+	//  打印当前控制台数据
 	show_PID();
 
 }
 
 
-
-/// GFLY 高度计算公式
-
-float gets_High(float t,float press){
-
-	
-	float K_Kelvin = 291.15f;
-	
-	float P0 = 1013.25f;
-	
-	float M = 0.02897f;
-	
-	float g = 9.81f;
-
-  float R = 8.314f;	
-	
-	// 获得绝对温度
-	float Tk = 16 + K_Kelvin;
-	
-	float altitude = ((R * Tk) / (M * g)) * log(P0 / press);
-
-  return altitude;
-	
-}
-
-
-
-
-
-/// GFLY  
-/// Gfly 飞控主任务
-void Gfly_Main_Thread(){
-
-	   //Signal_PID();
-	 	double_PID();
-}
-
  
 void Gfly_Event_Thread(){
-	 printf("P : %.2f  R :%.2f  Y :%.2f  T : %.2f  PR: %.2f  GX: %d GY: %d GZ: %d  High: %f  V_Speed: %.6f \r\n ",
-												current_pitch,current_roll,current_yaw,
-												temperature1,pressure
-	                      ,gyrox,gyroy,gyroz,Now_High,v_speed);
+	printf("P : %.2f  R :%.2f  Y :%.2f  GX: %d GY: %d GZ: %d  High: %f  X:%d Y:%d  \r\n ",
+					current_pitch,current_roll,current_yaw,gyrox,gyroy,gyroz,Now_High,flow_x,flow_y);
+	
+	
 		    //printf(" m1 %d m2 %d m3 %d m4 %d \r\n",m1,m2,m3,m4);
 
 	 basicDataSend(0,current_pitch,current_roll,current_yaw);
@@ -396,9 +263,9 @@ void Gfly_show(){
 	GFLY_LOG(" **********  *          *********     ***        \r\n");
   GFLY_LOG(" ------------------------------------------------\r\n");
 	GFLY_LOG(" @StaySunny fly.shilight.cn                      \r\n");
-	GFLY_LOG(" Gfly Version: Gfly_V4_AIR_V1.0                  \r\n");
-	GFLY_LOG(" Build Date  : 2024.1.1   Happy New Year         \r\n");
-	
+	GFLY_LOG(" Gfly Version: Gfly_V4_OS_V2.0                  \r\n");
+	GFLY_LOG(" Build Date  : 2024.4.14    \r\n");
+	GFLY_LOG(" FreeRTOS Version  : V202212.01\r\n");
 
 
 

@@ -35,8 +35,15 @@
 //   NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4); 根据FreeRTOS 设置位4 位抢占优先级  
 //   中断中 使用os API 函数  中断优先级要低于 配置文件中的 优先级
 
+// 
+
+//  PCB 电路 串口 映射   U6 —> DEBUG_U   U2—> UART   U1—> Lora
+
+//
 
 
+
+// 2024 4.14 串口重定向
 
 
 

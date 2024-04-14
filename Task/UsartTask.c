@@ -18,6 +18,11 @@ QueueHandle_t Usart6RxQueue;
 extern QueueHandle_t CmdQueue;
 
 
+extern int flow_x;
+extern int flow_y;	
+
+
+
 static TaskHandle_t Usart1Task_Handle = NULL;
 static TaskHandle_t Usart2Task_Handle = NULL;
 static TaskHandle_t Usart6Task_Handle = NULL;
@@ -182,8 +187,9 @@ static void Usart2RecTask(void* parameter){
 					
 				   if(Rt==0xAA){
 							 RtFLAG =0 ;
-							 printf("X:%dY:%d\r\n",(short)(data[1]<<8|data[0]),(short)(data[3]<<8|data[2]));
-					 
+							// printf("X:%dY:%d\r\n",(short)(data[1]<<8|data[0]),(short)(data[3]<<8|data[2]));
+					    flow_x = (short)(data[1]<<8|data[0]);
+						  flow_y = (short)(data[3]<<8|data[2]);
 					 } 
 						 RtFLAG =0 ;
 
